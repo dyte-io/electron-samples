@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: #181818;
+  color: #fcfcfc;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+code {
+  font-family: monospace;
+  color: #4b7cf7;
+}
