@@ -2,16 +2,16 @@ import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { release } from 'node:os';
 import { join, resolve } from 'node:path';
 
-let mainWindow;
+const protocol = process.env.APP_PROTOCOL || 'dyte-sample';
 
 if (process.defaultApp) {
   if (process.argv.length >= 2) {
-    app.setAsDefaultProtocolClient('dyte-sample', process.execPath, [
+    app.setAsDefaultProtocolClient(protocol, process.execPath, [
       resolve(process.argv[1]),
     ]);
   }
 } else {
-  app.setAsDefaultProtocolClient('dyte-sample');
+  app.setAsDefaultProtocolClient(protocol);
 }
 
 // The built directory structure

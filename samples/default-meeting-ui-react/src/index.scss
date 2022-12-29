@@ -17,5 +17,13 @@ html {
 
 code {
   font-family: monospace;
-  color: #4b7cf7;
+  color: hsl(221, 76%, 62%);
+}
+
+p {
+  line-height: 1.5;
+}
+
+.text-center {
+  text-align: center;
 }

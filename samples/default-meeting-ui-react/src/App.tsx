@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDyteClient } from '@dytesdk/react-web-core';
 import { DyteMeeting } from '@dytesdk/react-ui-kit';
 
-import logo from './assets/logo.svg';
 import './App.scss';
+import Home from './components/Home';
 
 function App() {
   const [state, setState] = useState<'idle' | 'meeting'>('idle');
@@ -28,14 +28,7 @@ function App() {
   }, []);
 
   if (!meeting && state === 'idle') {
-    return (
-      <div className="center-screen">
-        <img src={logo} alt="Dyte Logo" className="logo" height={42} />
-        <p>
-          Open a <code>dyte-sample://</code> deep link to join a meeting.
-        </p>
-      </div>
-    );
+    return <Home />;
   }
 
   return <DyteMeeting meeting={meeting!} showSetupScreen />;
