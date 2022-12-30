@@ -5,10 +5,22 @@ Electron app!
 
 ---
 
-![A screenshot of the DyteMeeting component](./screenshot.png)
+![A screenshot of the default homepage](./screenshot-home.png)
 
-Just pop in the `<DyteMeeting />` component, and pass the initialised `meeting`
-object to it and you're good to go!
+![A screenshot of the DyteMeeting component in an Electron App](./screenshot.png)
+
+## Usage
+
+This sample uses deep links to open up meetings.
+
+An example deep link:
+
+```
+dyte-sample://?authToken=<your-token>
+```
+
+This sample uses the protocol `dyte-sample://` by default in the
+[config.ts](./electron/config.ts) file. Edit it to use your own protocol.
 
 - [See source of React App](./src/App.tsx)
 - [See source of Electron main.js](./electron/main/index.ts)

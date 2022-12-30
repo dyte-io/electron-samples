@@ -1,8 +1,9 @@
 import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { release } from 'node:os';
 import { join, resolve } from 'node:path';
+import { APP_PROTOCOL } from '../config';
 
-const protocol = process.env.APP_PROTOCOL || 'dyte-sample';
+const protocol = APP_PROTOCOL;
 
 if (process.defaultApp) {
   if (process.argv.length >= 2) {
