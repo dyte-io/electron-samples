@@ -1,7 +1,8 @@
-import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, dialog, desktopCapturer } from 'electron';
 import { release } from 'node:os';
 import { join, resolve } from 'node:path';
 import { APP_PROTOCOL } from '../config';
+// import { DyteElectron } from '@dytesdk/electron-main';
 
 const protocol = APP_PROTOCOL;
 
@@ -64,8 +65,9 @@ async function createWindow() {
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
+      sandbox: false,
     },
   });
 
@@ -89,6 +91,16 @@ async function createWindow() {
     return { action: 'deny' };
   });
 }
+
+// TODO(ravindra-dyte): Uncomment this, once electron-sdk is fixed.
+// DyteElectron.init(ipcMain, desktopCapturer);
+
+// TODO(ravindra-dyte): Remove this, once electron-sdk is fixed.
+ipcMain.handle("DYTE_ELECTRON_GET_DISPLAY_MEDIA_SOURCE", async (_event, opts) => {
+  Object.assign(opts, { types: ["screen"] });
+  const sources = await desktopCapturer.getSources(opts);
+  return sources.find((source) => source.name === "Entire screen");
+});
 
 app.whenReady().then(createWindow);
 
@@ -119,8 +131,9 @@ ipcMain.handle('open-win', (_, arg) => {
   const childWindow = new BrowserWindow({
     webPreferences: {
       preload,
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false,
+      contextIsolation: true,
+      sandbox: false,
     },
   });
 

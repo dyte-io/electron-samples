@@ -4,8 +4,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import electron from 'vite-electron-plugin'
 import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin'
-import renderer from 'vite-plugin-electron-renderer'
-import pkg from './package.json'
+import pkg from './package.json';
 
 rmSync(path.join(__dirname, 'dist-electron'), { recursive: true, force: true })
 
@@ -37,11 +36,7 @@ export default defineConfig({
         // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
         loadViteEnv(),
       ],
-    }),
-    // Use Node.js API in the Renderer-process
-    renderer({
-      nodeIntegration: true,
-    }),
+    })
   ],
   server: !!process.env.VSCODE_DEBUG ? (() => {
     const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
@@ -50,8 +45,8 @@ export default defineConfig({
       port: +url.port,
     }
   })() : undefined,
-  clearScreen: false,
-})
+  clearScreen: false
+});
 
 function debounce<Fn extends (...args: any[]) => void>(fn: Fn, delay = 299): Fn {
   let t: NodeJS.Timeout
