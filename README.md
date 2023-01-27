@@ -48,7 +48,7 @@ git clone git@github.com:dyte-io/electron-samples.git
 2. Change directory to the sample you want to try, for example: in `default-meeting-ui`:
 
 ```sh
-cd samples/default-meeting-ui
+cd samples/default-meeting-ui-react
 ```
 
 3. Install the packages with your preferred package manager and start a development server and open up the page.
