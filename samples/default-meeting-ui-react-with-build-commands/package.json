@@ -14,7 +14,6 @@
     "build:linux": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --linux",
     "build:windows": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --win --x64",
     "build:windowsUniversal": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --win --x64 --ia32 --arm64",
-    "prepare": "is-ci || husky install",
     "lint": "prettier --check '**/packages/**/*.{ts,tsx,js,css,html,json}'",
     "lint:fix": "prettier --write '**/packages/**/*.{ts,tsx,js,css,html,json}'",
     "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release",
