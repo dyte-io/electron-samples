@@ -1,0 +1,85 @@
+{
+  "name": "dyte-electron-sample-app",
+  "productName": "Dyte",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dyte Sample Electron App",
+  "author": "Dyte",
+  "license": "MIT",
+  "main": "dist/main/index.cjs",
+  "scripts": {
+    "dev": "node scripts/watch.mjs",
+    "build": "npm run build:linux",
+    "build:mac": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --mac",
+    "build:linux": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --linux",
+    "build:windows": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --win --x64",
+    "build:windowsUniversal": "tsc --noEmit -p packages/renderer/tsconfig.json && node scripts/build.mjs && electron-builder --publish never --win --x64 --ia32 --arm64",
+    "prepare": "is-ci || husky install",
+    "lint": "prettier --check '**/packages/**/*.{ts,tsx,js,css,html,json}'",
+    "lint:fix": "prettier --write '**/packages/**/*.{ts,tsx,js,css,html,json}'",
+    "semantic-release": "lerna exec --concurrency 1 -- npx --no-install semantic-release",
+    "format": "prettier --write '**/packages/**/*.{ts,tsx,js,css,html,json}'"
+  },
+  "engines": {
+    "node": ">=16.13.2"
+  },
+  "dependencies": {
+    "@dytesdk/web-core": "1.4.0",
+    "@dytesdk/electron-main": "^1.0.3",
+    "@dytesdk/electron-preload": "^1.0.3",
+    "@dytesdk/react-ui-kit": "1.43.1",
+    "@dytesdk/ui-kit": "1.43.1",
+    "@nut-tree/nut-js": "^3.0.0",
+    "clsx": "^1.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@stencil/store": "^1.5.0",
+    "@types/react": "^18.0.1",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "autoprefixer": "^10.4.12",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "electron": "18.2.0",
+    "electron-builder": "^23.3.3",
+    "execa": "^6.1.0",
+    "husky": "^7.0.0",
+    "is-ci": "^3.0.1",
+    "lerna": "^4.0.0",
+    "postcss": "^8.4.16",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "sass": "^1.50.0",
+    "semantic-release": "^19.0.2",
+    "semantic-release-monorepo": "^7.0.5",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.7.0",
+    "vite": "^2.9.9",
+    "vite-plugin-esmodule": "^1.2.5",
+    "vite-plugin-optimizer": "^1.3.3",
+    "vite-plugin-resolve": "^2.0.4"
+  },
+  "env": {
+    "VITE_DEV_SERVER_HOST": "127.0.0.1",
+    "VITE_DEV_SERVER_PORT": 7777
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}

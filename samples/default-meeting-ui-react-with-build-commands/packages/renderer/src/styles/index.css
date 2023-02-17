@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-zinc-900 antialiased;
+  }
+
+  form h2 {
+    @apply my-4 text-center text-xl font-bold;
+  }
+  .form-group {
+    @apply mb-3 flex flex-col gap-1;
+  }
+
+  form input {
+    @apply h-10 rounded-md bg-zinc-200 px-3;
+  }
+
+  button[type='submit'] {
+    @apply h-10 rounded-md bg-zinc-800 text-zinc-100;
+  }
+}

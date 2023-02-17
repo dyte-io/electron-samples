@@ -1,0 +1,47 @@
+/**
+ * @see https://www.electron.build/configuration/configuration
+ */
+{
+  "appId": "com.dyte.electron-react",
+  "productName": "Dyte",
+  "copyright": "Copyright © 2022 ${author}",
+  "asar": true,
+  "directories": {
+    "output": "release/${version}",
+    "buildResources": "resources"
+  },
+  "files": ["dist"],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "artifactName": "${productName}-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "mac": {
+    "target": ["dmg"],
+    "artifactName": "${productName}-${version}-Installer.${ext}",
+    "extendInfo": {
+        "NSMicrophoneUsageDescription": "Dyte needs access to your microphone for conducting meetings.",
+        "NSCameraUsageDescription": "Dyte needs access to your camera for conducting meetings.",
+        "NSScreenCaptureDescription": "Dyte needs access to your screen for conducting meetings.",
+        "com.apple.security.device.audio-input": "Dyte needs access to your microphone for conducting meetings.",
+        "com.apple.security.device.camera": "Dyte needs access to your camera for conducting meetings.",
+        "com.apple.screencapture" : "Dyte needs access to your screen for interactive meetings.",
+        "com.apple.security.cs.allow-unsigned-executable-memory": true,
+        "com.apple.quarantine" : false,
+      }
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "artifactName": "${productName}-${version}-Installer.${ext}"
+  }
+}
