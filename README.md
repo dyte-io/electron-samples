@@ -8,7 +8,7 @@ experience in your Electron app!.
 
 Here are the list of available samples at the moment.
 
-1. [Default Meeting UI with React](./samples/default-meeting-ui-react/)
+1. [Default Meeting UI with React & Deep Links](./samples/default-meeting-ui-react-with-deep-links/)
 
 ## Usage
 
