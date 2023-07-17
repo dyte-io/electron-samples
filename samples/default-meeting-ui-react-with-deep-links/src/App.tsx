@@ -7,7 +7,7 @@ import Home from './components/Home';
 
 function App() {
   const [state, setState] = useState<'idle' | 'meeting'>('idle');
-  const [meeting, initMeeting] = useDyteClient();
+  const [meeting, initMeeting] = useDyteClient({});
 
   useEffect(() => {
     console.log(window.location.href);
