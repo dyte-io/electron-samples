@@ -1,4 +1,11 @@
-import { app, BrowserWindow, shell, ipcMain, dialog, desktopCapturer } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  shell,
+  ipcMain,
+  dialog,
+  desktopCapturer,
+} from 'electron';
 import { release } from 'node:os';
 import { join, resolve } from 'node:path';
 import { APP_PROTOCOL } from '../config';
@@ -149,7 +156,7 @@ app.on('open-url', (event, url) => {
     // Open devTool if the app is not packaged
     // win.webContents.openDevTools();
   } else {
-    win.loadFile(indexHtml + params);
+    win.loadFile(indexHtml, { search: u.search });
   }
 
   // dialog.showErrorBox('Welcome Back', `You arrived from: ${url}`);

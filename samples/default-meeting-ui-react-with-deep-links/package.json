@@ -39,6 +39,7 @@
     "@dytesdk/electron-main": "^1.1.0",
     "@dytesdk/electron-preload": "^1.1.0",
     "@dytesdk/react-ui-kit": "^1.53.1",
-    "@dytesdk/react-web-core": "^1.33.3"
+    "@dytesdk/react-web-core": "^1.33.3",
+    "@nut-tree/nut-js": ">=2.1.0"
   }
 }
